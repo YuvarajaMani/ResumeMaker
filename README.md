@@ -8,6 +8,12 @@ A browser-based, what-you-see-is-what-you-get resume editor. You edit text direc
 npm start
 ```
 
+or
+
+```
+node server.js
+```
+
 Then open http://localhost:5173. You can also open `index.html` directly in a browser, but then edits are saved in that browser only.
 
 Working on the code? See the [developer guide](DEVELOPER.md).
