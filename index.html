@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;600;700&family=Rubik:wght@400;500;600&family=Merriweather:wght@400;700&family=PT+Serif:wght@400;700&family=Source+Serif+4:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">R</span><span>Resume Builder</span></div>
+    <div class="docname">
+      <input id="docName" aria-label="Resume name" maxlength="80">
+      <button id="saveBtn" class="btn sm save-btn" data-icon="save" title="Save now (Ctrl+S)">Save</button>
+      <button id="saveState" class="save-state" aria-haspopup="dialog" aria-expanded="false" title="Where is my resume saved?">Saved</button>
+    </div>
+    <div class="save-pop" id="savePop" role="dialog" aria-label="Where your resume is saved" hidden></div>
+    <div class="top-actions">
+      <button id="undoBtn" class="icon-btn" data-icon="undo" title="Undo (Ctrl+Z)"></button>
+      <button id="redoBtn" class="icon-btn" data-icon="redo" title="Redo (Ctrl+Y)"></button>
+      <div class="zoom" title="Zoom">
+        <button id="zoomOut" aria-label="Zoom out">&minus;</button>
+        <span id="zoomVal">100%</span>
+        <button id="zoomIn" aria-label="Zoom in">+</button>
+      </div>
+      <span id="pageCount" class="page-count"></span>
+      <button id="previewBtn" class="btn" data-icon="eye" title="See the pages exactly as they will print">Preview</button>
+      <button id="downloadBtn" class="btn primary" data-icon="download">Download PDF</button>
+    </div>
+  </header>
+
+  <div class="app">
+    <nav class="rail" id="rail" aria-label="Editor tools">
+      <button data-panel="add" data-icon="plus"><span>Add section</span></button>
+      <button data-panel="rearrange" data-icon="layers"><span>Rearrange</span></button>
+      <button data-panel="templates" data-icon="layout"><span>Templates</span></button>
+      <button data-panel="design" data-icon="palette"><span>Design &amp; font</span></button>
+      <button data-panel="check" data-icon="check"><span>Resume check</span></button>
+      <button data-panel="ats" data-icon="scan"><span>ATS preview</span></button>
+      <button data-panel="file" data-icon="file"><span>Import / export</span></button>
+    </nav>
+
+    <aside class="drawer" id="drawer" hidden>
+      <div class="drawer-head">
+        <h3 id="drawerTitle"></h3>
+        <button id="drawerClose" class="icon-btn" data-icon="x" aria-label="Close panel"></button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+    </aside>
+
+    <main class="canvas" id="canvas">
+      <div class="page-zoom" id="pageZoom">
+        <div class="page" id="page"></div>
+      </div>
+      <p class="canvas-hint">Click any text on the page to edit it. Hover a section or entry for more options.</p>
+    </main>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle">Add a section</h3>
+        <button class="icon-btn" data-icon="x" data-close aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <input type="file" id="photoInput" accept="image/*" hidden>
+  <input type="file" id="importInput" accept="application/json,.json" hidden>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
